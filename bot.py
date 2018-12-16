@@ -7,6 +7,9 @@ import tornado.httpserver
 import tornado.ioloop
 import tornado.web
 from random import randint
+from flask import Flask, request
+
+server = Flask(__name__)
 
 bot = telebot.TeleBot(config.token)
 
@@ -63,6 +66,14 @@ def fuck(m):
             bot.delete_message(m.chat.id, m.message_id)
             msg = '@' + m.from_user.username + text[randint(0,7)]
             bot.send_message(m.chat.id, msg)
+                
+@server.route("/")
+def webhook():
+    bot.remove_webhook()
+    bot.set_webhook(url="https://787761210:AAGsqGNuIt15Gr_9eVERRxvzJ75wH5ZTBL0")
+    return "!", 200
+
+server.run(host="0.0.0.0", port=os.environ.get('PORT', 5000))
             
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
