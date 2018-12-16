@@ -8,12 +8,7 @@ import tornado.ioloop
 import tornado.web
 from random import randint
 
-
 bot = telebot.TeleBot(config.token)
-
-class MainHandler(tornado.web.RequestHandler):
-    def get(self):
-        self.write("Hello world")
 
 messages = {}
 text = [', ты ужасный человек...',
@@ -68,13 +63,14 @@ def fuck(m):
             bot.delete_message(m.chat.id, m.message_id)
             msg = '@' + m.from_user.username + text[randint(0,7)]
             bot.send_message(m.chat.id, msg)
-
-@bot.message_handler(content_types=['sticker'])
-def fukkkk(m):
-    print (m)
-
+            
+class MainHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.write("Hello world")
+        
 def main():
     bot.polling(none_stop=True)
+    
     application = tornado.web.Application([
         (r"/", MainHandler),
     ])
