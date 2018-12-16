@@ -73,7 +73,7 @@ def webhook():
     bot.set_webhook(url="https://787761210:AAGsqGNuIt15Gr_9eVERRxvzJ75wH5ZTBL0")
     return "!", 200
 
-server.run(host="0.0.0.0", port=os.environ.get('PORT', 5000))
+server.run(host="0.0.0.0", port=os.environ.get(PORT, 5000))
             
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
