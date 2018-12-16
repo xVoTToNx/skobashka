@@ -2,15 +2,18 @@ import config
 import telebot
 import json
 import time
-import os.path 
-import tornado.httpserver 
-import tornado.ioloop 
-import tornado.options 
+import os
+import tornado.httpserver
+import tornado.ioloop
 import tornado.web
 from random import randint
 
 
 bot = telebot.TeleBot(config.token)
+
+class MainHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.write("Hello world")
 
 messages = {}
 text = [', ты ужасный человек...',
@@ -71,11 +74,14 @@ def fukkkk(m):
     print (m)
 
 def main():
-    application = tornado.web.Application()
     bot.polling(none_stop=True)
+    application = tornado.web.Application([
+        (r"/", MainHandler),
+    ])
+    http_server = tornado.httpserver.HTTPServer(application)
     port = int(os.environ.get("PORT", 5000))
-    application.listen(port)
-    tornado.ioloop.IOLoop.instance().start() 
+    http_server.listen(port)
+    tornado.ioloop.IOLoop.instance().start()
 
         
         
