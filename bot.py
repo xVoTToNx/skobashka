@@ -26,7 +26,7 @@ def save_messages():
         json.dump(messages, f)
 
 def is_recent(m):
-    return (time() - m.date) < 60
+    return (time.time() - m.date) < 60
 
 @bot.message_handler(commands=['my_apologies'])
 def kek(m):
