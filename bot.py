@@ -9,7 +9,7 @@ import tornado.web
 from random import randint
 from flask import Flask, request
 
-server = Flask(__name__)
+#server = Flask(__name__)
 
 bot = telebot.TeleBot(config.token)
 
@@ -69,7 +69,7 @@ def fuck(m):
                 
 
 
-server.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))           
+#server.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))           
         
 def main():
         while True:
