@@ -75,6 +75,7 @@ def main():
     bot.polling(none_stop=True)
     port = int(os.environ.get("PORT", 5000))
     application.listen(port)
+    tornado.ioloop.IOLoop.instance().start() 
 
         
         
