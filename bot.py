@@ -9,7 +9,7 @@ import tornado.web
 from random import randint
 from flask import Flask, request
 
-#server = Flask(__name__)
+server = Flask(__name__)
 
 bot = telebot.TeleBot(config.token)
 
@@ -68,8 +68,18 @@ def fuck(m):
             bot.send_message(m.chat.id, msg)
                 
 
+@server.route("/bot", methods=['POST'])
+def getMessage():
+    bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
+    return "!", 200
 
-#server.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))           
+@server.route("/")
+def webhook():
+    bot.remove_webhook()
+    bot.set_webhook(url="https://" + config.token + "/bot")
+    return "!", 200
+
+server.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))           
         
 def main():
         while True:
