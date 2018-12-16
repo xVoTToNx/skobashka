@@ -56,16 +56,18 @@ def kek(m):
 
 @bot.message_handler(content_types=['text'])
 def fuck(m):
-    if(is_recent(m)):
-        if abs(m.text.count(')') - m.text.count('(')) > 1:
-            buffer = m.text
-            buffer = buffer.replace('(','')
-            buffer = buffer.replace(')','')
-            messages[m.from_user.id] = buffer
-            save_messages()
-            bot.delete_message(m.chat.id, m.message_id)
-            msg = '@' + m.from_user.username + text[randint(0,7)]
-            bot.send_message(m.chat.id, msg)
+        bot.send_message(m.chat,"sdfsdfd")
+        print(m)
+        if(is_recent(m)):
+                if abs(m.text.count(')') - m.text.count('(')) > 1:
+                        buffer = m.text
+                        buffer = buffer.replace('(','')
+                        buffer = buffer.replace(')','')
+                        messages[m.from_user.id] = buffer
+                        save_messages()
+                        bot.delete_message(m.chat.id, m.message_id)
+                        msg = '@' + m.from_user.username + text[randint(0,7)]
+                        bot.send_message(m.chat.id, msg)
                 
 
 @server.route("/bot", methods=['POST'])
@@ -88,8 +90,6 @@ def main():
             except Exception as e:
                 time.sleep(15)
 
-
-        
         
 
 if __name__  ==  '__main__':
