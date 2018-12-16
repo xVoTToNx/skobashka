@@ -2,6 +2,11 @@ import config
 import telebot
 import json
 import time
+import os.path 
+import tornado.httpserver 
+import tornado.ioloop 
+import tornado.options 
+import tornado.web
 from random import randint
 
 
@@ -66,6 +71,13 @@ def fukkkk(m):
     print (m)
 
 def main():
+    application = tornado.web.Application()
     bot.polling(none_stop=True)
+    port = int(os.environ.get("PORT", 5000))
+    application.listen(port)
+
+        
+        
+
 if __name__  ==  '__main__':
     main()
