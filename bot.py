@@ -73,22 +73,11 @@ def webhook():
     bot.set_webhook(url="https://787761210:AAGsqGNuIt15Gr_9eVERRxvzJ75wH5ZTBL0")
     return "!", 200
 
-server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000))
-            
-class MainHandler(tornado.web.RequestHandler):
-    def get(self):
-        self.write("Hello world")
+server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000))           
         
 def main():
     bot.polling(none_stop=True)
-    
-    application = tornado.web.Application([
-        (r"/", MainHandler),
-    ])
-    http_server = tornado.httpserver.HTTPServer(application)
-    port = int(os.environ.get('PORT', 5000))
-    http_server.listen(port)
-    tornado.ioloop.IOLoop.instance().start()
+
 
         
         
