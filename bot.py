@@ -67,12 +67,12 @@ def fuck(m):
             msg = '@' + m.from_user.username + text[randint(0,7)]
             bot.send_message(m.chat.id, msg)
                        
-        
+server.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))  
 def main():
     bot.polling(none_stop=True)
-    server.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))  
+    
 
        
 if __name__  ==  '__main__':
     main()
-
+server.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))  
