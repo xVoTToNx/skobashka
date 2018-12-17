@@ -79,9 +79,7 @@ def getMessage():
 def webhook():
     bot.remove_webhook()
     bot.set_webhook(url="https://" + config.token + "/bot")
-    return "!", 200
-
-server.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))           
+    return "!", 20         
         
 def main():
         while True:
@@ -94,3 +92,5 @@ def main():
 
 if __name__  ==  '__main__':
     main()
+
+server.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))  
