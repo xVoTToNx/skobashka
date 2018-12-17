@@ -1,1 +1,1 @@
-bot: run-program python bot.py
+worker: python bot.py
