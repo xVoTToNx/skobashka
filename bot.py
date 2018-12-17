@@ -73,6 +73,7 @@ def fuck(m):
 def main():
         while True:
             try:
+                bot.deleteWebhook()
                 bot.polling(none_stop=True)
             except Exception as e:
                 time.sleep(15)
