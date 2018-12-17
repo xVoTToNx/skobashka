@@ -12,7 +12,7 @@ from flask import Flask, request
 server = Flask(__name__)
 
 bot = telebot.TeleBot(config.token)
-bot.deleteWebhook()
+
 messages = {}
 text = [', ты ужасный человек...',
         ', как тебе не стыдно?',
