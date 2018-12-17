@@ -12,7 +12,7 @@ from flask import Flask, request
 server = Flask(__name__)
 
 bot = telebot.TeleBot(config.token)
-
+bot.deleteWebhook()
 messages = {}
 text = [', ты ужасный человек...',
         ', как тебе не стыдно?',
@@ -72,8 +72,7 @@ def main():
     bot.polling(none_stop=True)
     server.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))  
 
-        
-
+       
 if __name__  ==  '__main__':
     main()
 
