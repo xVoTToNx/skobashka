@@ -1,1 +1,1 @@
-bot: newrelic-admin run-program python bot.py
+bot: run-program python bot.py
