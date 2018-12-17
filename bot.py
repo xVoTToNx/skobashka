@@ -57,8 +57,6 @@ def kek(m):
 @bot.message_handler(content_types=['text'])
 def fuck(m):
     if(is_recent(m)):
-        bot.send_message(m.chat,"sdfsdfd")
-        print(m)
         if abs(m.text.count(')') - m.text.count('(')) > 1:
             buffer = m.text
             buffer = buffer.replace('(','')
@@ -71,17 +69,11 @@ def fuck(m):
                        
         
 def main():
-    while True:
-        try:
-            bot.deleteWebhook()
-            bot.polling(none_stop=True)
-            server.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))  
-        except Exception as e:
-            time.sleep(15)
+    bot.polling(none_stop=True)
+    server.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))  
 
         
 
 if __name__  ==  '__main__':
     main()
 
-server.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))  
