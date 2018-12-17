@@ -68,18 +68,7 @@ def fuck(m):
                         bot.delete_message(m.chat.id, m.message_id)
                         msg = '@' + m.from_user.username + text[randint(0,7)]
                         bot.send_message(m.chat.id, msg)
-                
-
-@server.route("/bot", methods=['POST'])
-def getMessage():
-    bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
-    return "!", 200
-
-@server.route("/")
-def webhook():
-    bot.remove_webhook()
-    bot.set_webhook(url="https://" + config.token + "/bot")
-    return "!", 20         
+                       
         
 def main():
         while True:
