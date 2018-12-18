@@ -86,14 +86,14 @@ def cheking(m):
                         or abs(m.text.count('\ufe59') - m.text.count('\ufe5a')) > 1 \
                         or abs(m.text.count('\u2e28') - m.text.count('\u2e29')) > 1
                         or abs(m.text.count('\u2769') - m.text.count('\u2768')) > 1:
-                    buffer = m.text
-                    buffer = buffer.replace('(', '')
-                    buffer = buffer.replace(')', '')
-                    messages[m.from_user.id] = buffer
-                    save_messages()
-                    bot.delete_message(m.chat.id, m.message_id)
-                    msg = '@' + m.from_user.username + text[randint(0, 7)]
-                    bot.send_message(m.chat.id, msg)
+                                buffer = m.text
+                                buffer = buffer.replace('(', '')
+                                buffer = buffer.replace(')', '')
+                                messages[m.from_user.id] = buffer
+                                save_messages()
+                                bot.delete_message(m.chat.id, m.message_id)
+                                msg = '@' + m.from_user.username + text[randint(0, 7)]
+                                bot.send_message(m.chat.id, msg)
 
 
 def main():
