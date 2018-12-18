@@ -84,7 +84,7 @@ def cheking(m):
                         or abs(m.text.count('\u276e') - m.text.count('\u276f')) > 1 \
                         or abs(m.text.count('\u2770') - m.text.count('\u2771')) > 1 \
                         or abs(m.text.count('\ufe59') - m.text.count('\ufe5a')) > 1 \
-                        or abs(m.text.count('\u2e28') - m.text.count('\u2e29')) > 1
+                        or abs(m.text.count('\u2e28') - m.text.count('\u2e29')) > 1 \
                         or abs(m.text.count('\u2769') - m.text.count('\u2768')) > 1:
                                 buffer = m.text
                                 buffer = buffer.replace('(', '')
