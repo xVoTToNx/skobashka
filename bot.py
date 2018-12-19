@@ -71,14 +71,12 @@ def reveal_your_secrets(m):
 @bot.message_handler(commands=['update'])
 def minus_day(m):
     if m.from_user.id == 458619004 or m.from_user.id == 396811781:
-        global day
         day = day - 1
 
 @bot.message_handler(content_types=['text'])
 def cheking(m):
     if (m.from_user.id == 396811781):
         if not (day == time.gmtime().tm_mday):
-            global day
             day = time.gmtime().tm_mday
             bot.send_message(m.chat.id, "Добрый день, Великая Каракатица, Властелин Геятины и Герцог Чмок")
 
