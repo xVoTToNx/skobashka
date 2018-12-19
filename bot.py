@@ -97,7 +97,7 @@ def add_dep(m):
                 interim_deputy.remove(m.reply_to_message.from_user.id)
                 bot.send_message(m.chat.id, "Меньше депутатов - меньше проблем, не так ли?")
                         
-def cheking(m):
+def checking(m):
     global day
     if m.from_user.id == 396811781:
         if not (day == time.gmtime().tm_mday):
@@ -139,10 +139,12 @@ def cheking(m):
                                 bot.send_message(m.chat.id, msg)
                                 
 @bot.message_handler(content_types=['text'])
-cheking(m)
+def checking1(m):
+        checking(m)
 
 @bot.edited_message_handler(content_types=['text'])
-cheking(m)
+def checking2(m):
+        checking(m)
 
 @bot.message_handler(commands=['id'])  
 def stickers(m):
