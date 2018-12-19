@@ -6,7 +6,7 @@ from random import randint
 
 bot = telebot.TeleBot(config.token)
 owner = 458619004
-day = 18
+day
 checker = False
 
 messages = {}
@@ -75,6 +75,7 @@ def minus_day(m):
 
 @bot.message_handler(content_types=['text'])
 def cheking(m):
+    global day
     if m.from_user.id == 396811781 or m.from_user.id == owner:
         if not (day == time.gmtime().tm_mday):
             day = time.gmtime().tm_mday
