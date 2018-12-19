@@ -11,6 +11,7 @@ checker = False
 
 messages = {}
 chat_ids = []
+interim_deputy = []
 #sfjdkhfkjhjk5h4hjhflkhfhljhw4hj3hlh5h34h34k54h
 text = [', ты ужасный человек...',
         ', как тебе не стыдно?',
@@ -45,6 +46,14 @@ def lol(m):
             return
     chat_ids.append(m.chat.id)
 
+@bot.message_handler(commands=['stop'])
+def stopping(m):
+        for ids in chat_ids:
+                if ids == m.chat.id:
+                        chat_ids.remove(m.chat.id)
+                        return
+        bot.send_message(m.chat.id, "Вас и так нет в списках -_-")
+        
 @bot.message_handler(commands=['my_apologies'])
 def kek(m):
     for ids in chat_ids:
@@ -70,20 +79,32 @@ def reveal_your_secrets(m):
     
 @bot.message_handler(commands=['update'])
 def minus_day(m):
+    global day
     if m.from_user.id == 458619004 or m.from_user.id == 396811781:
         day = day - 1
 
+@bot.message_handler(commands=['add_deputy'])
+def add_dep(m):
+        if m.from_user.id == owner 
+                interim_deputy.append(m.reply_to_message.from_user.id)
+                
+@bot.message_handler(commands=['del_deputy'])
+def add_dep(m):
+        if m.from_user.id == owner and interim_deputy.count(m.reply_to_message.from_user.id) > 0:
+                interim_deputy.remove(m.reply_to_message.from_user.id)
+                
+                
 @bot.message_handler(content_types=['text'])
 def cheking(m):
     global day
     if m.from_user.id == 396811781 or m.from_user.id == owner:
         if not (day == time.gmtime().tm_mday):
             day = time.gmtime().tm_mday
-            bot.send_message(m.chat.id, "Добрый день, Великая Каракатица, Властелин Геятины и Герцог Чмок")
+            bot.send_message(m.chat.id, "О, Всевышняя, ты услышала наши мольбы! Народ, к вам явился его Пидорство, Король Радужных Королевст, Властелин онального кольца(чтобы это не значило), Член Ордена Пидора дня и любимец всех... Ах да, кто это вообще?")
 
     for ids in chat_ids:
         if ids == m.chat.id:
-            if (is_recent(m)):
+            if (is_recent(m) and interim deputy.count(m.from_user.id) == 0):
                 if abs(m.text.count(')') - m.text.count('(')) > 1 \
                         or abs(m.text.count('\uff08') - m.text.count('\uff09')) > 1 \
                         or abs(m.text.count('\uff5f') - m.text.count('\uff60')) > 1 \
@@ -112,6 +133,10 @@ def cheking(m):
                                 msg = '@' + m.from_user.username + text[randint(0, len(text))]
                                 bot.send_message(m.chat.id, msg)
 
+
+@bot.message_handler(content_types=['sticker'])  
+def stickers(m):
+        print(str(m))
 
 def main():
     bot.polling(none_stop=True)
