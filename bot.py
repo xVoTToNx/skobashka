@@ -108,7 +108,7 @@ def cheking(m):
                                 messages[m.from_user.id] = buffer
                                 save_messages()
                                 bot.delete_message(m.chat.id, m.message_id)
-                                msg = '@' + m.from_user.username + text[randint(0, 10)]
+                                msg = '@' + m.from_user.username + text[randint(0, len(text))]
                                 bot.send_message(m.chat.id, msg)
 
 
