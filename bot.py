@@ -6,7 +6,7 @@ from random import randint
 
 bot = telebot.TeleBot(config.token)
 owner = 458619004
-day
+day = 0
 checker = False
 
 messages = {}
