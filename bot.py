@@ -6,6 +6,8 @@ from random import randint
 
 bot = telebot.TeleBot(config.token)
 owner = 458619004
+day = 18
+checker = False
 
 messages = {}
 chat_ids = []
@@ -65,9 +67,21 @@ def kek(m):
 def reveal_your_secrets(m):
     if (m.from_user.id == 458619004):
         bot.send_message(m.chat.id, messages)
+    
+@bot.message_handler(commands=['update'])
+def minus_day(m):
+    if m.from_user.id == 458619004 or m.from_user.id == 396811781:
+        global day
+        day = day - 1
 
 @bot.message_handler(content_types=['text'])
 def cheking(m):
+    if (m.from_user.id == 396811781):
+        if not (day == time.gmtime().tm_mday):
+            global day
+            day = time.gmtime().tm_mday
+            bot.send_message(m.chat.id, "Добрый день, Великая Каракатица, Властелин Геятины и Герцог Чмок")
+
     for ids in chat_ids:
         if ids == m.chat.id:
             if (is_recent(m)):
@@ -87,8 +101,12 @@ def cheking(m):
                         or abs(m.text.count('\u2e28') - m.text.count('\u2e29')) > 1 \
                         or abs(m.text.count('\u2769') - m.text.count('\u2768')) > 1:
                                 buffer = m.text
-                                buffer = buffer.replace('(', '')
-                                buffer = buffer.replace(')', '')
+                                buffer = buffer.replace('\uff08', '').replace('\u3008', '').replace('\u27ea', '').replace('\u276e', '').replace('\u2e29', '')
+                                buffer = buffer.replace('\uff09', '').replace('\u3009', '').replace('\u27eb', '').replace('\u276f', '').replace('\u2e28', '')
+                                buffer = buffer.replace('\uff5f', '').replace('\u300a', '').replace('\u276a', '').replace('\u2770', '').replace('\u2769', '')
+                                buffer = buffer.replace('\uff60', '').replace('\u300b', '').replace('\u276b', '').replace('\u2771', '').replace('\u2768', '')
+                                buffer = buffer.replace('\u2985', '').replace('\u27e8', '').replace('\u276c', '').replace('\ufe59', '').replace(')', '')
+                                buffer = buffer.replace('\u2986', '').replace('\u27e9', '').replace('\u276d', '').replace('\ufe5a', '').replace('(', '')
                                 messages[m.from_user.id] = buffer
                                 save_messages()
                                 bot.delete_message(m.chat.id, m.message_id)
