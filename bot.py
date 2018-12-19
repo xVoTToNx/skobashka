@@ -68,7 +68,7 @@ def kek(m):
                             msg += m.from_user.last_name + 'said:\n' + messages[h]
                         except:
                             msg += 'said:\n' + messages[h]
-                        if randint(0, 10) == 2:
+                        if randint(0, 6) == 2:
                             bot.send_sticker(m.chat.id, 'CAADAgADzgEAAgXephcjqwOob0t19AI')
                         else:
                             bot.send_message(m.chat.id, msg)
@@ -88,14 +88,20 @@ def minus_day(m):
 @bot.message_handler(commands=['add_deputy'])
 def add_dep(m):
         if m.from_user.id == owner:
-                interim_deputy.append(m.reply_to_message.from_user.id)
-                bot.send_message(m.chat.id, "Пользователь теперь депутат.")
+                if interim_deputy.count(m.reply_to_message.from_user.id) == 0:
+                        interim_deputy.append(m.reply_to_message.from_user.id)
+                        bot.send_message(m.chat.id, "Пользователь теперь депутат.")
+                else:
+                        bot.send_message(m.chat.id, "Двойных депутатов не бывает! По крайней мере у меня...")
                 
 @bot.message_handler(commands=['del_deputy'])
 def add_dep(m):
-        if m.from_user.id == owner and interim_deputy.count(m.reply_to_message.from_user.id) > 0:
-                interim_deputy.remove(m.reply_to_message.from_user.id)
-                bot.send_message(m.chat.id, "Меньше депутатов - меньше проблем, не так ли?")
+        if m.from_user.id == owner:
+                if interim_deputy.count(m.reply_to_message.from_user.id) > 0:
+                        interim_deputy.remove(m.reply_to_message.from_user.id)
+                        bot.send_message(m.chat.id, "Меньше депутатов - меньше проблем, не так ли?")
+                else:
+                        bot.send_message(m.chat.id, "Он обычный житель, зачем глумишься?!")
 
 @bot.message_handler(commands=['id'])  
 def stickers(m):
