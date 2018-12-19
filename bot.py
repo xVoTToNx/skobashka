@@ -75,8 +75,8 @@ def minus_day(m):
 
 @bot.message_handler(content_types=['text'])
 def cheking(m):
-    if (m.from_user.id == 396811781):
-        if not (day == time.gmtime().tm_mday):
+    if m.from_user.id == 396811781 or m.from_user.id == owner:
+        if day != time.gmtime().tm_mday:
             day = time.gmtime().tm_mday
             bot.send_message(m.chat.id, "Добрый день, Великая Каракатица, Властелин Геятины и Герцог Чмок")
 
