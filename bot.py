@@ -96,7 +96,13 @@ def add_dep(m):
         if m.from_user.id == owner and interim_deputy.count(m.reply_to_message.from_user.id) > 0:
                 interim_deputy.remove(m.reply_to_message.from_user.id)
                 bot.send_message(m.chat.id, "Меньше депутатов - меньше проблем, не так ли?")
-                        
+
+@bot.message_handler(commands=['id'])  
+def stickers(m):
+    if m.from_user.id == owner:
+        if m.replay_to_message.content_type == 'sticker':
+            bot.send_message(m.chat.id, m.replay_to_message.sticker.file_id)
+        
 def checking(m):
     global day
     if m.from_user.id == 396811781:
@@ -145,14 +151,6 @@ def checking1(m):
 @bot.edited_message_handler(content_types=['text'])
 def checking2(m):
         checking(m)
-
-@bot.message_handler(commands=['id'])  
-def stickers(m):
-    if m.from_user.id == owner:
-        bot.send_message(m.chat.id, m.replay_to_message.sticker.file_id)
-        bot.send_message(m.chat.id, m.replay_to_message.content_type )
-        if m.replay_to_message.content_type == 'sticker':
-            bot.send_message(m.chat.id, m.replay_to_message.sticker.file_id)
 
 def main():
     bot.polling(none_stop=True)
