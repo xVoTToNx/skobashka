@@ -104,7 +104,7 @@ def cheking(m):
 
     for ids in chat_ids:
         if ids == m.chat.id:
-            if (is_recent(m) and interim deputy.count(m.from_user.id) == 0):
+            if (is_recent(m) and interim_deputy.count(m.from_user.id) == 0):
                 if abs(m.text.count(')') - m.text.count('(')) > 1 \
                         or abs(m.text.count('\uff08') - m.text.count('\uff09')) > 1 \
                         or abs(m.text.count('\uff5f') - m.text.count('\uff60')) > 1 \
