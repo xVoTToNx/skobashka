@@ -36,7 +36,7 @@ def save_messages():
 
 
 def is_recent(m):
-    return (time.time() - m.date) < 60
+    return (time.time() - m.date) < 3600
 
 @bot.message_handler(commands=['sfjdkhfkjhjk5h4hjhflkhfhljhw4hj3hlh5h34h34k54h'])
 def lol(m):
@@ -92,8 +92,7 @@ def add_dep(m):
 def add_dep(m):
         if m.from_user.id == owner and interim_deputy.count(m.reply_to_message.from_user.id) > 0:
                 interim_deputy.remove(m.reply_to_message.from_user.id)
-                
-                
+                        
 @bot.message_handler(content_types=['text'])
 def cheking(m):
     global day
@@ -134,13 +133,17 @@ def cheking(m):
                                 try:
                                         msg = '@' + m.from_user.username + text[randint(0, len(text) - 1)]
                                 except:
-                                        msg
+                                        msg = m.from_user.first_name + text[randint(0, len(text) - 1)]
                                 bot.send_message(m.chat.id, msg)
 
+@bot.edited_message_handler(content_types=['text'])
+cheking(m)
 
-@bot.message_handler(content_types=['sticker'])  
+@bot.message_handler(commands=['id'])  
 def stickers(m):
-        print(str(m))
+    if m.from_user.id == owner:
+        if m.replay_to_message.content_type == 'sticker':
+            bot.send_message(m.chat.id, m.replay_to_message.sticker.file_id)
 
 def main():
     bot.polling(none_stop=True)
