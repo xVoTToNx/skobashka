@@ -100,7 +100,7 @@ def add_dep(m):
 @bot.message_handler(commands=['id'])  
 def stickers(m):
     if m.from_user.id == owner:
-        if m.replay_to_message.content_type == 'sticker':
+        if m.reply_to_message.content_type == 'sticker':
             bot.send_message(m.chat.id, m.replay_to_message.sticker.file_id)
         
 def checking(m):
