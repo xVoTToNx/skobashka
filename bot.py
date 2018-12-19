@@ -97,10 +97,11 @@ def add_dep(m):
 @bot.message_handler(content_types=['text'])
 def cheking(m):
     global day
-    if m.from_user.id == 396811781 or m.from_user.id == owner:
+    if m.from_user.id == 396811781:
         if not (day == time.gmtime().tm_mday):
             day = time.gmtime().tm_mday
             bot.send_message(m.chat.id, "О, Всевышняя, ты услышала наши мольбы! Народ, к вам явился его Пидорство, Король Радужных Королевст, Властелин онального кольца(чтобы это не значило), Член Ордена Пидора дня и любимец всех... Ах да, кто это вообще?")
+            bot.send_sticker(m.chat.id, "CAADAgADlQADGB0GD35PgqKR-qTUAg")
 
     for ids in chat_ids:
         if ids == m.chat.id:
@@ -130,7 +131,10 @@ def cheking(m):
                                 messages[m.from_user.id] = buffer
                                 save_messages()
                                 bot.delete_message(m.chat.id, m.message_id)
-                                msg = '@' + m.from_user.username + text[randint(0, len(text))]
+                                try:
+                                        msg = '@' + m.from_user.username + text[randint(0, len(text) - 1)]
+                                except:
+                                        msg
                                 bot.send_message(m.chat.id, msg)
 
 
