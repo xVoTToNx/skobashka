@@ -85,7 +85,7 @@ def minus_day(m):
 
 @bot.message_handler(commands=['add_deputy'])
 def add_dep(m):
-        if m.from_user.id == owner 
+        if m.from_user.id == owner:
                 interim_deputy.append(m.reply_to_message.from_user.id)
                 
 @bot.message_handler(commands=['del_deputy'])
