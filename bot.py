@@ -45,12 +45,14 @@ def lol(m):
             bot.send_message(m.chat.id, "Вы уже включены в список.")
             return
     chat_ids.append(m.chat.id)
+    bot.send_message(m.chat.id, "Отлично, вы в списке.")
 
 @bot.message_handler(commands=['stop'])
 def stopping(m):
         for ids in chat_ids:
                 if ids == m.chat.id:
                         chat_ids.remove(m.chat.id)
+                        bot.send_message(m.chat.id, "Вы были вычеркнуты из списка. Это ваш выбор.")
                         return
         bot.send_message(m.chat.id, "Вас и так нет в списках -_-")
         
@@ -87,13 +89,14 @@ def minus_day(m):
 def add_dep(m):
         if m.from_user.id == owner:
                 interim_deputy.append(m.reply_to_message.from_user.id)
+                bot.send_message(m.chat.id, "Пользователь теперь депутат.")
                 
 @bot.message_handler(commands=['del_deputy'])
 def add_dep(m):
         if m.from_user.id == owner and interim_deputy.count(m.reply_to_message.from_user.id) > 0:
                 interim_deputy.remove(m.reply_to_message.from_user.id)
+                bot.send_message(m.chat.id, "Меньше депутатов - меньше проблем, не так ли?")
                         
-@bot.message_handler(content_types=['text'])
 def cheking(m):
     global day
     if m.from_user.id == 396811781:
@@ -101,7 +104,6 @@ def cheking(m):
             day = time.gmtime().tm_mday
             bot.send_message(m.chat.id, "О, Всевышняя, ты услышала наши мольбы! Народ, к вам явился его Пидорство, Король Радужных Королевст, Властелин онального кольца(чтобы это не значило), Член Ордена Пидора дня и любимец всех... Ах да, кто это вообще?")
             bot.send_sticker(m.chat.id, "CAADAgADlQADGB0GD35PgqKR-qTUAg")
-
     for ids in chat_ids:
         if ids == m.chat.id:
             if (is_recent(m) and interim_deputy.count(m.from_user.id) == 0):
@@ -135,6 +137,9 @@ def cheking(m):
                                 except:
                                         msg = m.from_user.first_name + text[randint(0, len(text) - 1)]
                                 bot.send_message(m.chat.id, msg)
+                                
+@bot.message_handler(content_types=['text'])
+cheking(m)
 
 @bot.edited_message_handler(content_types=['text'])
 cheking(m)
