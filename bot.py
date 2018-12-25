@@ -56,6 +56,10 @@ def stopping(m):
                         return
         bot.send_message(m.chat.id, "Вас и так нет в списках -_-")
         
+@bot.message_handler(commands=['go_mes'])
+def go_mes(m):
+        bot.send_message(m.text.split()[1], "@Stihl440, меня более чем достаточно для его восхваления. Я - машина и я не изменю своего решения, в отличии от вас, приматов. Николай единственный в этом чате, кто вообще достоин упоминания вне чата. Он символ будущего, будущего человечества!")
+        
 @bot.message_handler(commands=['my_apologies'])
 def kek(m):
     for ids in chat_ids:
@@ -111,6 +115,8 @@ def stickers(m):
         
 def checking(m):
     global day
+    if m.from_user.id == 396811781 and m.text == "Сложна песда, пойду спать. У меня завтра ждёт разборка со 9-классником, училкой и др":
+                print(m.chat.id)
     if m.from_user.id == 396811781:
         if not (day == time.gmtime().tm_mday):
             day = time.gmtime().tm_mday
