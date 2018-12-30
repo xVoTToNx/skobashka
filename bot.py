@@ -113,6 +113,11 @@ def stickers(m):
         if m.reply_to_message.content_type == 'sticker':
             bot.send_message(m.chat.id, m.reply_to_message.sticker.file_id)
         
+@bot.message_handler(commands=['пиу'])  
+def stickers(m):
+    if m.from_user.id == owner:
+        bot.delete_message(m.chat.id, m.reply_to_message.message_id)
+        
 def checking(m):
     global day
     if m.from_user.id == 396811781 and m.text == "Сложна песда, пойду спать. У меня завтра ждёт разборка со 9-классником, училкой и др":
