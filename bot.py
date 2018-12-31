@@ -53,6 +53,8 @@ def ccccc(m):
 @bot.message_handler(commands=['ng'])
 def ng(m):
         bot.send_message("-1001219131585", "Happy New Fucking Year!\nC++ is the best PL!!!\nHoo-Hoo-Ho");
+        bot.send_sticker("-1001219131585", 'CAADAgADzQADfPhVG2nuLlBBR6KMAg')
+        
 @bot.message_handler(commands=['stop'])
 def stopping(m):
         for ids in chat_ids:
