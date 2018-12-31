@@ -47,6 +47,12 @@ def lol(m):
     chat_ids.append(m.chat.id)
     bot.send_message(m.chat.id, "Отлично, вы в списке.")
 
+@bot.message_handler(commands=['ch'])
+def ccccc(m):
+       bot.send_message("-1001219131585", "hh"); 
+@bot.message_handler(commands=['ng'])
+def ng(m):
+        bot.send_message("-1001219131585", "Happy New Fucking Year!\nC++ is the best PL!!!\nHoo-Hoo-Ho");
 @bot.message_handler(commands=['stop'])
 def stopping(m):
         for ids in chat_ids:
